@@ -40,14 +40,20 @@ This cheat sheet provides a quick reference for common Docker commands.
 | Command                                      | Description                                         |
 |----------------------------------------------|-----------------------------------------------------|
 | `docker run <image>`                         | Run a command in a new container                    |
-| `docker run -d <image>`                     | Run a container in detached mode                    |
-| `docker ps`                                  | List running containers                              |
-| `docker ps -a`                               | List all containers, including stopped ones         |
-| `docker stop <container>`                    | Stop a running container                             |
-| `docker start <container>`                   | Start a stopped container                            |
-| `docker restart <container>`                 | Restart a container                                  |
-| `docker rm <container>`                      | Remove a stopped container                           |
-| `docker exec -it <container> <command>`     | Execute a command inside a running container        |
+| `docker run -d <image>`                      | Run a container in detached mode                    |
+| `docker run -d  --name <name> -p <Serverport>:<containerport> <image>`                      | Run a container in detached mode give it specific name and map the port of the container                   |
+| `docker run -tid --name <name> --memory 60mb -p 5050:80`                 | Run a container and specify memory for it    |
+| `docker run -tid <image> sh`                 | Open shell of the container in current terminal     |
+| `docker ps` or `docker container ls`         | List running containers                             |
+| `docker ps -a` or `docker container ls -a`   | List all containers, including stopped ones         |
+| `docker stop <container>`                    | Stop a running container                            |
+| `docker stop -60 <container>`                | Stop a running container in 60 sec                  |
+| `docker container kill <container>`          | Kill a running container                            |
+| `docker start <container>`                   | Start a stopped container                           |
+| `docker restart <container>`                 | Restart a container                                 |
+| `docker rm <container>`                      | Remove a stopped container                          |
+| `docker rm <container> --force`              | Remove a stopped container forcably                 |
+| `docker exec -it <container> <command>`      | Execute a command inside a running container        |
 | `docker logs <container>`                    | Fetch the logs of a container                       |
 
 ---
