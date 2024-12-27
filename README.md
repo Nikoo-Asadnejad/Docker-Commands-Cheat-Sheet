@@ -97,9 +97,26 @@ This cheat sheet provides a quick reference for common Docker commands.
 
 | Command                                      | Description                                         |
 |----------------------------------------------|-----------------------------------------------------|
-| `docker swarm init`                          | Initialize a new Swarm                             |
-| `docker swarm join --token <token> <manager-ip>:<port>` | Join a Swarm as a worker                 |
-| `docker service create --name <service-name> <image>` | Create a new service in the Swarm          |
-| `docker service ls`                          | List all services in the Swarm                    |
-| `docker service scale <service-name>=<replica-count>` | Scale a service to the specified number of replicas |
-| `docker node ls`                             | List all nodes in the Swarm                        |
+| `docker swarm init`                          | Initialize a new Swarm and make the current node the Swarm manager. |
+| `docker swarm join --token <token> <manager-ip>:<port>` | Join a Swarm as a worker node using the provided token and manager IP. |
+| `docker swarm join-token manager`           | Display the join token command to add another manager node. |
+| `docker swarm join-token worker`            | Display the join token command to add a worker node. |
+| `docker swarm leave`                        | Leave the Swarm. Use `--force` if the node is a manager. |
+| `docker service create --name <service-name> <image>` | Create a new service in the Swarm using the specified image. |
+| `docker service update <service-name> --image <new-image>` | Update an existing service to use a new image. |
+| `docker service ls`                          | List all services running in the Swarm. |
+| `docker service ps <service-name>`           | List all tasks (containers) of a specific service. |
+| `docker service logs <service-name>`         | View logs for a specific service. |
+| `docker service rm <service-name>`           | Remove a service from the Swarm. |
+| `docker service scale <service-name>=<replica-count>` | Scale a service to the specified number of replicas. |
+| `docker node ls`                             | List all nodes in the Swarm, showing their roles, availability, and status. |
+| `docker node ps <node-id>`                   | List tasks running on a specific node. |
+| `docker node rm <node-id>`                   | Remove a node from the Swarm. The node must leave the Swarm first. |
+| `docker node update --availability <active|pause|drain> <node-id>` | Change the availability state of a node. |
+| `docker stack deploy -c <compose-file.yml> <stack-name>` | Deploy a stack using a Docker Compose file. |
+| `docker stack ls`                            | List all deployed stacks in the Swarm. |
+| `docker stack ps <stack-name>`               | List all tasks in a stack. |
+| `docker stack rm <stack-name>`               | Remove a deployed stack. |
+| `docker inspect <object>`                    | Inspect the details of any Docker object (node, service, task, etc.). |
+| `docker events`                              | Display real-time events from the Swarm. |
+| `docker swarm update --task-history-limit <value>` | Update Swarm settings, such as task history limit. |
