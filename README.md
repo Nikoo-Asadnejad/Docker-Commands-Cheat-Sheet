@@ -60,13 +60,22 @@ This cheat sheet provides a quick reference for common Docker commands.
 
 ## Networking
 
+
 | Command                                      | Description                                         |
 |----------------------------------------------|-----------------------------------------------------|
-| `docker network ls`                          | List all networks                                   |
-| `docker network create <network-name>`      | Create a new network                                |
-| `docker network rm <network-name>`          | Remove a network                                    |
-| `docker network inspect <network-name>`     | Inspect a network                                   |
-| `docker run --network <network-name> <image>`| Run a container in a specific network              |
+| `docker network ls`                          | List all existing Docker networks. Displays details such as network name, ID, driver type, and scope. |
+| `docker network create <network-name>`      | Create a new user-defined network with the specified name. By default, it uses the `bridge` driver. |
+| `docker network create --driver <driver-name> <network-name>` | Create a network using a specific driver (e.g., `bridge`, `overlay`, `host`, or `none`). |
+| `docker network rm <network-name>`          | Remove a Docker network. The network must not be in use by any containers. |
+| `docker network inspect <network-name>`     | Display detailed information about a network, including connected containers, IP ranges, and driver type. |
+| `docker run --network <network-name> <image>`| Start a container and connect it to a specific network at runtime. |
+| `docker network connect <network-name> <container-id>` | Connect an existing container to a specified network. |
+| `docker network disconnect <network-name> <container-id>` | Disconnect a container from a specific network. |
+| `docker network prune`                      | Remove all unused Docker networks. Be cautious as it deletes networks not being used by containers. |
+| `docker-compose up`                         | Automatically creates and manages a network for the services defined in the `docker-compose.yml` file. |
+| `docker network create --subnet=<CIDR> <network-name>` | Create a network with a custom subnet (CIDR notation). |
+| `docker network create --gateway=<IP> <network-name>` | Create a network with a custom gateway IP address. |
+| `docker network create -o com.docker.network.bridge.name=<bridge-name> <network-name>` | Create a `bridge` network with a specific bridge name. |
 
 ---
 
