@@ -85,11 +85,28 @@ This cheat sheet provides a quick reference for common Docker commands.
 
 | Command                                      | Description                                         |
 |----------------------------------------------|-----------------------------------------------------|
-| `docker-compose up`                          | Start services defined in a `docker-compose.yml` file |
-| `docker-compose down`                        | Stop and remove services defined in a `docker-compose.yml` file |
-| `docker-compose ps`                          | List containers for the services defined in the `docker-compose.yml` file |
-| `docker-compose logs`                        | View logs for services defined in the `docker-compose.yml` file |
-| `docker-compose build`                       | Build or rebuild services defined in the `docker-compose.yml` file |
+| `docker-compose up`                          | Start all services defined in a `docker-compose.yml` file. Creates and starts containers as needed. |
+| `docker-compose up -d`                       | Start services in detached mode (running in the background). |
+| `docker-compose down`                        | Stop and remove containers, networks, volumes, and images created by `docker-compose up`. |
+| `docker-compose down -v`                     | Stop and remove services along with their associated volumes. |
+| `docker-compose ps`                          | List the status of containers for the services defined in the `docker-compose.yml` file. |
+| `docker-compose logs`                        | View logs for all running services. By default, it displays real-time logs. |
+| `docker-compose logs -f`                     | Follow logs in real-time for services defined in the `docker-compose.yml` file. |
+| `docker-compose build`                       | Build or rebuild images for services defined in the `docker-compose.yml` file. |
+| `docker-compose build --no-cache`            | Build services without using the cache. Forces a fresh build. |
+| `docker-compose pull`                        | Pull the latest images for all services defined in the `docker-compose.yml` file. |
+| `docker-compose start`                       | Start containers for services that were stopped but not removed. |
+| `docker-compose stop`                        | Stop running containers without removing them. They can be restarted later using `docker-compose start`. |
+| `docker-compose restart`                     | Restart running containers for services defined in the `docker-compose.yml` file. |
+| `docker-compose exec <service-name> <command>` | Execute a command inside a running service container. |
+| `docker-compose run <service-name> <command>` | Run a one-off command in a new container for a service. |
+| `docker-compose config`                      | Validate and view the configuration of the `docker-compose.yml` file. |
+| `docker-compose config --services`           | List all services defined in the `docker-compose.yml` file. |
+| `docker-compose config --volumes`            | List all volumes defined in the `docker-compose.yml` file. |
+| `docker-compose kill`                        | Forcefully stop running containers for all services. |
+| `docker-compose rm`                          | Remove stopped service containers. Prompts for confirmation by default. |
+| `docker-compose rm -f`                       | Remove stopped service containers without confirmation. |
+| `docker-compose version`                     | Display the installed version of Docker Compose. |
 
 ---
 
