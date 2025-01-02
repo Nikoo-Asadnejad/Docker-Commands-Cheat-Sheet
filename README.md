@@ -87,6 +87,7 @@ This cheat sheet provides a quick reference for common Docker commands.
 | `docker volume create <volume-name>`        | Create a new volume                                 |
 | `docker volume rm <volume-name>`            | Remove a volume                                     |
 | `docker run -v <volume-name>:<container-path> <image>`| Mount a volume into a container             |
+| `docker volume create --driver local --opt type=nfs  --opt o=addr=<NFS_SERVER_IP>,rw --opt device=:/export/shared  my-nfs-volume` | Create centrlized nfs sharing volume |
 
 ---
 
