@@ -32,7 +32,11 @@ This cheat sheet provides a quick reference for common Docker commands.
 | `docker build -t <image-name>:<tag> <path>`| Build an image from a Dockerfile                    |
 | `docker tag <source-image> <target-image>`  | Tag an image with a new name                       |
 | `docker search <term>`                       | Search for images on Docker Hub                     |
-
+| `docker history <image>` | Show image layer history |
+| `docker save -o file.tar <image>` | Save image to tar archive |
+| `docker load -i file.tar` | Load image from tar archive |
+| `docker image inspect <image>` | Detailed image info |
+| `docker image prune -a` | Remove unused images |
 ---
 
 ## Containers
@@ -55,7 +59,12 @@ This cheat sheet provides a quick reference for common Docker commands.
 | `docker rm <container> --force`              | Remove a stopped container forcably                 |
 | `docker exec -it <container> <command>`      | Execute a command inside a running container        |
 | `docker logs <container>`                    | Fetch the logs of a container                       |
-
+| `docker attach <container>` | Attach terminal to running container |
+| `docker pause <container>` | Pause all processes |
+| `docker unpause <container>` | Resume paused container |
+| `docker rename <old> <new>` | Rename container |
+| `docker update --memory 200m <container>` | Update container resources |
+| `docker wait <container>` | Wait until container stops |
 ---
 
 ## Networking
