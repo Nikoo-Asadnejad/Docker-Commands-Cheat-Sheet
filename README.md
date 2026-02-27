@@ -9,6 +9,12 @@ This cheat sheet provides a quick reference for common Docker commands.
 - [Containers](#containers)
 - [Networking](#networking)
 - [Volumes](#volumes)
+- [Inspection & Formatting](#inspection--formatting)
+- [Resource Monitoring](#resource-monitoring)
+- [Security](#security)
+- [Context & Remote Hosts](#context--remote-hosts)
+- [Buildx & Multi-Platform](#buildx--multi-platform)
+- [Registry & Login](#registry--login)
 - [Docker Compose](#docker-compose)
 - [Docker Swarm](#docker-swarm)
 
@@ -86,6 +92,14 @@ This cheat sheet provides a quick reference for common Docker commands.
 | `docker network create --gateway=<IP> <network-name>` | Create a network with a custom gateway IP address. |
 | `docker network create -o com.docker.network.bridge.name=<bridge-name> <network-name>` | Create a `bridge` network with a specific bridge name. |
 
+## Inspection & Formatting
+
+| Command | Description |
+|--------|-------------|
+| `docker inspect <object>` | Low-level details (JSON) |
+| `docker inspect -f '{{.State.Status}}' <container>` | Format output |
+| `docker ps --format "table {{.Names}}\t{{.Status}}"` | Custom table output |
+
 ---
 
 ## Volumes
@@ -97,6 +111,57 @@ This cheat sheet provides a quick reference for common Docker commands.
 | `docker volume rm <volume-name>`            | Remove a volume                                     |
 | `docker run -v <volume-name>:<container-path> <image>`| Mount a volume into a container             |
 | `docker volume create --driver local --opt type=nfs  --opt o=addr=<NFS_SERVER_IP>,rw --opt device=:/export/shared  my-nfs-volume` | Create centrlized nfs sharing volume |
+
+---
+
+## Resource Monitoring
+
+| Command | Description |
+|--------|-------------|
+| `docker stats` | Live resource usage of containers |
+| `docker top <container>` | Running processes in container |
+| `docker events` | Real-time Docker events |
+
+---
+
+## Security
+
+| Command | Description |
+|--------|-------------|
+| `docker scan <image>` | Scan image for vulnerabilities |
+| `docker trust inspect <image>` | Verify image signatures |
+
+---
+
+## Registry & Login
+
+| Command | Description |
+|--------|-------------|
+| `docker login` | Login to registry |
+| `docker logout` | Logout |
+| `docker push <image>` | Push image to registry |
+| `docker pull <image>` | Pull image |
+
+---
+
+## Context & Remote Hosts
+
+| Command | Description |
+|--------|-------------|
+| `docker context ls` | List contexts |
+| `docker context create <name>` | Create new context |
+| `docker context use <name>` | Switch context |
+
+---
+
+## Buildx & Multi-Platform
+
+| Command | Description |
+|--------|-------------|
+| `docker buildx ls` | List builders |
+| `docker buildx create` | Create builder |
+| `docker buildx build --platform linux/amd64,linux/arm64 .` | Multi-arch build |
+| `docker buildx bake` | Build from config |
 
 ---
 
